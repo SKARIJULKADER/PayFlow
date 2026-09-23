@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   PayFlow design tokens
+   Deep navy + electric blue brand palette with a subtle cyan accent.
+------------------------------------------------------------------- */
+@theme {
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  /* Neutral navy scale */
+  --color-ink-50: #f4f7fc;
+  --color-ink-100: #e6ecf6;
+  --color-ink-200: #c9d6e9;
+  --color-ink-300: #9cb0cf;
+  --color-ink-400: #6b83a8;
+  --color-ink-500: #4a6285;
+  --color-ink-600: #34496a;
+  --color-ink-700: #263755;
+  --color-ink-800: #1a2740;
+  --color-ink-900: #0f1c33;
+  --color-ink-950: #081123;
+
+  /* Brand blue */
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dbe7ff;
+  --color-brand-200: #bcd2ff;
+  --color-brand-300: #8eb3ff;
+  --color-brand-400: #5a8dfb;
+  --color-brand-500: #3468f0;
+  --color-brand-600: #2049d6;
+  --color-brand-700: #1a3aab;
+  --color-brand-800: #17318a;
+  --color-brand-900: #142a6e;
+
+  /* Cyan accent */
+  --color-aqua-100: #d7f8ff;
+  --color-aqua-200: #a8eeff;
+  --color-aqua-300: #6ddef7;
+  --color-aqua-400: #2fc6e8;
+  --color-aqua-500: #12a6ca;
+  --color-aqua-600: #0d84a3;
+
+  /* Soft, layered shadows */
+  --shadow-soft: 0 1px 2px rgba(8, 17, 35, 0.05), 0 12px 26px -18px rgba(8, 17, 35, 0.25);
+  --shadow-card: 0 1px 2px rgba(8, 17, 35, 0.04), 0 18px 44px -24px rgba(8, 17, 35, 0.3);
+  --shadow-lift: 0 2px 6px rgba(8, 17, 35, 0.06), 0 32px 64px -32px rgba(20, 42, 110, 0.45);
+  --shadow-glow: 0 18px 42px -20px rgba(32, 73, 214, 0.6);
+
+  /* Motion */
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pop-in: pop-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-slide-in-right: slide-in-right 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-scale-check: scale-check 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-draw-check: draw-check 0.6s ease-out 0.2s both;
+  --animate-shimmer: shimmer 1.8s linear infinite;
+  --animate-float-slow: float-slow 9s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.94) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scale-check {
+    from {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes draw-check {
+    from {
+      stroke-dashoffset: 48;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes shimmer {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink-50 font-sans text-ink-900 antialiased;
+    background-image:
+      radial-gradient(58rem 32rem at 6% -14%, rgba(52, 104, 240, 0.12), transparent 62%),
+      radial-gradient(46rem 28rem at 102% -6%, rgba(47, 198, 232, 0.16), transparent 58%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background-color: rgba(52, 104, 240, 0.18);
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
